@@ -24,7 +24,7 @@ And insert into config/config.php this config:
 
      'class'=>'OC_User_RADIUS', 
 
-     'arguments'=>array("radius1.secure-pass.net", "gullp.net", "owncloud") 
+     'arguments'=>array("SERVER", "REALM", "SECRET") 
 
    )
 
