@@ -1,5 +1,10 @@
 I need using radius with owncloud, i write radius support! :)
 
+
+Need php-pecl-radius
+
+yum install -y php-pecl-radius.x86\_64
+
 Adding radius support to this plugin 
 http://owncloud.org/support/custom-user-configuration/
 
