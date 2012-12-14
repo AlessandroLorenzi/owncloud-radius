@@ -31,31 +31,12 @@ class OC_User_RADIUS extends OC_User_Backend{
 		$password=escapeshellarg($password);
 		$result=array();
 
-		$radius = radius_auth_open(); 
+		require_once('radius.class.php');
 
+		$radius = new Radius($this->host, $this->secret);
+		
+		return ( $radius->AccessRequest($uidEscaped, $password)  )
 
-		if (! radius_add_server($radius,$this->host,0,$this->secret,5,3)) 
-		{
-			die('Radius Error: ' . radius_strerror($radius)); 
-			//return false;
-		}
-		
-		if (! radius_create_request($radius,RADIUS_ACCESS_REQUEST))
-		{
-			//die('Radius Error: ' . radius_strerror($radius));
-		die(" XX ");
-			//return false;
-		} 	
-		
-		radius_put_attr($radius,RADIUS_USER_NAME,$uidEscaped);
-		radius_put_attr($radius,RADIUS_USER_PASSWORD,$password); 
-		
-		if(radius_send_request($radius) == RADIUS_ACCESS_ACCEPT) {
-			print "CANNATO";
-			return false;
-		}else{
-			return $uid;
-		}
 	}
 	
 	public function userExists($uid) {
