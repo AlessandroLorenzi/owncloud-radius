@@ -27,15 +27,17 @@ class OC_User_RADIUS extends OC_User_Backend{
 	 * Check if the password is correct without logging in the user
 	 */
 	public function checkPassword($uid, $password) {
-		$uidEscaped=escapeshellarg($uid)."@".$this->realm;
-		$password=escapeshellarg($password);
-		$result=array();
-
-		require_once('radius.class.php');
+		require_once('apps/user_external/lib/radius.class.php');
 
 		$radius = new Radius($this->host, $this->secret);
 		
-		return ( $radius->AccessRequest($uidEscaped, $password)  )
+		if(! $radius->AccessRequest($uid."@".$this->realm, $password)  )
+		{
+			return false;
+		}else{
+			return $uid;
+		}
+
 
 	}
 	

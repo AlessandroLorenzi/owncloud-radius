@@ -1,22 +1,14 @@
 I need using radius with owncloud, i write radius support! :)
 
-
-Need php-pecl-radius
-
-yum install -y php-pecl-radius.x86\_64
-
-
-
-Adding radius support to this plugin 
-
+It is an extension to app "user\_external".
 http://owncloud.org/support/custom-user-configuration/
 
-
-
+This plug-in contains "Pure PHP radius class", a PHP class to connect to
+RADIUS. This sofware is Copyright (c) 2008, SysCo systemes de communication sa
 
 To install copy user\_external into /var/www/html/owncloud/apps/
 
-And insert into config/config.php this config: 
+Insert into config/config.php this config: 
 
  'user\_backends'=>array( 
 
@@ -29,6 +21,3 @@ And insert into config/config.php this config:
    )
 
 
-I have a problem similar http://forums.archlinux.fr/post105680.html 
-
-Maybe the problem is only in 64bit
